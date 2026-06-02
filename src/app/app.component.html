@@ -1,1 +1,56 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<header class="header">
+  <div class="super-header">
+    <div class="container super-header-container">
+      <div class="logo">
+        <a href="/">
+          <img class="logo-image" src="/images/logo.svg" alt="Rumtibet" />
+          <h1 class="logo-text fs-16 bold">{{ companyName }}</h1>
+        </a>
+      </div>
+      <nav class="nav fs-18 semi-bold">
+        <a id="nav-munu" href="#main">Главная</a>
+        <a id="nav-guide" href="#guide">Про гида</a>
+        <a id="nav-program" href="#program">Программа тура</a>
+        <a id="nav-price" href="price">Стоимость</a>
+        <a id="nav-blog" href="blog">Блог</a>
+        <a id="nav-contacts" href="contacts">Контакты</a>
+      </nav>
+      <button id="consultation-btn">Консультация</button>
+    </div>
+  </div>
+
+  <section class="main-header">
+    <h1 class="main-header-title fw-regular">
+      Насладись прогулкой в горах <br />
+      с командой единомышленников
+    </h1>
+    <div class="program-select-container">
+      <div class="select">
+        <select id="location" class="date-capture">
+          <option>Локация для тура</option>
+          <img src="/images/vector-icon.svg" alt="Выбор из списка" />
+        </select>
+        <label>выберите из списка</label>
+      </div>
+
+      <div class="select">
+        <input
+          id="select-date"
+          type="date"
+          date-placeholder="Дата похода"
+          class="date-capture date-placeholder-text"
+          required
+        />
+        <label for="">укажите дату</label>
+      </div>
+
+      <div class="select">
+        <select id="participants" class="date-capture">
+          <option>Участники</option>
+        </select>
+        <label>выберите из списка</label>
+      </div>
+      <button id="find-program" class="search-program-btn fs-16 bold">Найти программу</button>
+    </div>
+  </section>
+</header>
