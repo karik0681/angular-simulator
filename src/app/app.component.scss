@@ -1,0 +1,157 @@
+:root {
+  --primary-color: #fdfdfd;
+}
+
+.header {
+  background-image: url('/images/background.png');
+  background-position: center;
+  height: 1105px;
+  width: 100%;
+
+  .super-header {
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(24, 18, 30, 0.5);
+    color: var(--primary-color);
+  }
+
+  .super-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1180px;
+    height: 60px;
+
+    .logo a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--primary-color);
+    }
+
+    .logo-image {
+      width: 138px;
+      height: 29px;
+    }
+
+    .logo-text {
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: var(--primary-color);
+    }
+
+    .nav {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      padding: 0;
+
+      a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 18px;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    #consultation-btn {
+      background: transparent;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 10px 24px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 0;
+
+      &:hover {
+        background: var(--primary-color);
+        color: #18121e;
+      }
+    }
+  }
+
+  .main-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 370px 82px 370px;
+    min-height: calc(1105px - 120px);
+
+    .main-header-title {
+      font-size: 50px;
+      line-height: 150%;
+      text-transform: uppercase;
+      color: var(--primary-color);
+      margin: 0 0 41px 0;
+      font-weight: 400;
+    }
+
+    .program-select-container {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      width: 1180px;
+      height: 161px;
+      padding: 0 24px;
+      color: var(--primary-color);
+
+      .select {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        label {
+          font-size: 12px;
+          color: var(--primary-color);
+          opacity: 0.7;
+        }
+      }
+
+      .date-capture {
+        width: 270px;
+        height: 52px;
+        border: 1px solid rgba(225, 227, 228, 1);
+        border-radius: 8px;
+        background: none;
+        color: var(--primary-color);
+        padding: 0 16px;
+        font-size: 14px;
+
+        option {
+          color: #18121e;
+        }
+
+        ::-webkit-calendar-picker-indicator {
+          filter: invert(1);
+          cursor: pointer;
+        }
+      }
+
+      .search-program-btn {
+        width: 213px;
+        height: 52px;
+        border-radius: 4px;
+        border: none;
+        color: var(--primary-color);
+        background: rgba(26, 62, 62, 1);
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 40px;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
