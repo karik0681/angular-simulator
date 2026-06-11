@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { Color } from '../enums/Color';
 import { Collection } from '../collection';
 
+interface IGuide {
+  name: string;
+  experience: number;
+}
+
 @Component({
   selector: 'app-root',
   imports: [],
@@ -37,10 +42,9 @@ export class AppComponent {
       'Кавказские горы',
     ]);
 
-    const guidesCollection: Collection<{ name: string; experience: number }> =
-      new Collection<{ name: string; experience: number }>([
-        { name: 'Алексей', experience: 5 },
-        { name: 'Мария', experience: 3 },
-      ]);
+    const guidesCollection: Collection<IGuide> = new Collection<IGuide>([
+      { name: 'Алексей', experience: 5 },
+      { name: 'Мария', experience: 3 },
+    ]);
   }
 }
