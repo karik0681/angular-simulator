@@ -4,7 +4,7 @@
       <div class="logo">
         <a href="/">
           <img class="logo-image" src="/images/logo.svg" alt="Rumtibet" />
-          <h1 class="logo-text fs-16 bold">{{ companyName }}</h1>
+          <span class="logo-text fs-16 bold">{{ companyName }}</span>
         </a>
       </div>
       <nav class="nav fs-18 semi-bold">
@@ -15,7 +15,7 @@
         <a id="nav-blog" href="blog">Блог</a>
         <a id="nav-contacts" href="contacts">Контакты</a>
       </nav>
-      <button id="consultation-btn">Консультация</button>
+      <button class="outline-btn">Консультация</button>
     </div>
   </div>
 
@@ -50,7 +50,67 @@
         </select>
         <label>выберите из списка</label>
       </div>
-      <button id="find-program" class="search-program-btn fs-16 bold">Найти программу</button>
+      <button id="find-program" class="primary-btn">Найти программу</button>
     </div>
   </section>
 </header>
+
+<section class="explore-wrapper">
+  <div class="explore">
+    <div class="image-stack">
+      <img class="image-main" src="/images/explore-mountain.jpg" alt="Горы" />
+      <div class="image-overlay">
+        <img src="/images/explore-cabin.jpg" alt="Домик в горах" />
+        <button class="play-btn" aria-label="Смотреть видео">
+          <img src="/images/play-icon.svg" alt="" />
+        </button>
+      </div>
+    </div>
+
+    <div class="text-content">
+      <span class="label">о нашем походе</span>
+      <h2 class="title">Исследуйте все горные массивы мира вместе с нами</h2>
+      <p class="description">
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+        тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат
+        Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его
+        поисками в классической латинской литературе.
+      </p>
+      <button class="primary-btn">Программа тура</button>
+    </div>
+  </div>
+</section>
+
+<section class="best-programs">
+  <div class="best-programs-content">
+    <div class="text-column">
+      <span class="label">наше предложение</span>
+      <h2 class="title">Лучшие программы для тебя</h2>
+      <p class="description">
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+        тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.
+      </p>
+
+      <div class="benefits-list">
+        @for (item of benefits; track item.id) {
+          <div class="benefit-item">
+            <img [src]="item.icon" [alt]="item.title" class="benefit-icon" />
+            <div class="benefit-text">
+              <h3 class="benefit-title">{{ item.title }}</h3>
+              <p class="benefit-description">{{ item.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+
+      <button class="primary-btn">Стоимость программ</button>
+    </div>
+
+    <div class="photo-grid">
+      <img src="/images/canyon-river-cup.jpg" alt="Каньон с рекой" />
+      <img src="/images/canyon-view-traveler.jpg" alt="Вид с обрыва" />
+      <img src="/images/snowmobile-mountain-winter.jpg" alt="Снегоход в горах" />
+      <img src="/images/mountain-valley-stream.jpg" alt="Горная долина" />
+    </div>
+  </div>
+</section>
