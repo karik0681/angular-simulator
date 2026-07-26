@@ -11,9 +11,15 @@
   line-height: 20px;
   letter-spacing: 1.2%;
   cursor: pointer;
+  transition: opacity 0.3s;
 
   &:hover {
     opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }
 
