@@ -27,7 +27,14 @@
         <div class="widgets-row">
           @if (showCounter) {
             <div class="widget-content">
-              <button id="decrement-btn" class="btn-control" (click)="decrementCount()" [disabled]="isDecrementDisabled">−</button>
+              <button
+                id="decrement-btn"
+                class="btn-control"
+                (click)="decrementCount()"
+                [disabled]="isDecrementDisabled"
+              >
+                −
+              </button>
               <span class="count-display">{{ clickCount }}</span>
               <button id="increment-btn" class="btn-control" (click)="incrementCount()">+</button>
             </div>

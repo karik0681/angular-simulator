@@ -16,7 +16,6 @@ interface IGuide {
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  // ---- Свойства ----
   readonly companyName: string = 'РУМТИБЕТ';
 
   tourAdvantages: IBenefit[] = [
@@ -53,9 +52,8 @@ export class AppComponent {
   liveInputText: string = '';
   isLoading: boolean = true;
 
-  private timerId: any;
+  private timerId: number = 0;
 
-  // ---- Конструктор ----
   constructor() {
     this.saveLastVisitDate();
     this.saveVisitCount();
@@ -74,7 +72,6 @@ export class AppComponent {
     ]);
   }
 
-  // ---- Методы ----
   get isSearchDisabled(): boolean {
     return !this.selectedLocation || !this.selectedDate || !this.selectedParticipants;
   }
@@ -119,14 +116,7 @@ export class AppComponent {
   }
 
   private updateDateTime(): void {
-    const now = new Date();
-    const day = String(now.getDate()).padStart(2, '0');
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const year = now.getFullYear();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    this.currentDateTime = `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
+    this.currentDateTime = new Date().toLocaleString('ru-RU');
   }
 
   private hideLoader(): void {
