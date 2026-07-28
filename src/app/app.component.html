@@ -1,56 +1,174 @@
-<header class="header">
-  <div class="super-header">
-    <div class="container super-header-container">
-      <div class="logo">
-        <a href="/">
-          <img class="logo-image" src="/images/logo.svg" alt="Rumtibet" />
-          <h1 class="logo-text fs-16 bold">{{ companyName }}</h1>
-        </a>
-      </div>
-      <nav class="nav fs-18 semi-bold">
-        <a id="nav-munu" href="#main">Главная</a>
-        <a id="nav-guide" href="#guide">Про гида</a>
-        <a id="nav-program" href="#program">Программа тура</a>
-        <a id="nav-price" href="price">Стоимость</a>
-        <a id="nav-blog" href="blog">Блог</a>
-        <a id="nav-contacts" href="contacts">Контакты</a>
-      </nav>
-      <button id="consultation-btn">Консультация</button>
+@if (isLoading) {
+  <div class="loader-wrapper">
+    <div class="spinner">
+      <img class="spinner-icon" src="/images/loader-icon.svg" alt="" />
     </div>
+    <p class="loader-text">Загрузка...</p>
   </div>
+} @else {
+  <header class="header">
+    <div class="super-header">
+      <div class="container super-header-container">
+        <div class="logo">
+          <a href="/">
+            <img class="logo-image" src="/images/logo.svg" alt="Rumtibet" />
+            <span class="logo-text fs-16 bold">{{ companyName }}</span>
+          </a>
+        </div>
+        <nav class="nav fs-18 semi-bold">
+          <a id="nav-munu" href="#main">Главная</a>
+          <a id="nav-guide" href="#guide">Про гида</a>
+          <a id="nav-program" href="#program">Программа тура</a>
+          <a id="nav-price" href="price">Стоимость</a>
+          <a id="nav-blog" href="blog">Блог</a>
+          <a id="nav-contacts" href="contacts">Контакты</a>
+        </nav>
 
-  <section class="main-header">
-    <h1 class="main-header-title fw-regular">
-      Насладись прогулкой в горах <br />
-      с командой единомышленников
-    </h1>
-    <div class="program-select-container">
-      <div class="select">
-        <select id="location" class="date-capture">
-          <option>Локация для тура</option>
-          <img src="/images/vector-icon.svg" alt="Выбор из списка" />
-        </select>
-        <label>выберите из списка</label>
+        <div class="widgets-row">
+          @if (showCounter) {
+            <div class="widget-content">
+              <button
+                id="decrement-btn"
+                class="btn-control"
+                (click)="decrementCount()"
+                [disabled]="isDecrementDisabled"
+              >
+                −
+              </button>
+              <span class="count-display">{{ clickCount }}</span>
+              <button id="increment-btn" class="btn-control" (click)="incrementCount()">+</button>
+            </div>
+          } @else {
+            <div class="widget-content">
+              <span class="date-display">{{ currentDateTime }}</span>
+            </div>
+          }
+          <button id="toggle-widget-btn" class="toggle-widget-btn" (click)="toggleWidget()">
+            {{ showCounter ? 'Показать дату' : 'Показать кликер' }}
+          </button>
+        </div>
+
+        <button id="consultation-btn" class="outline-btn">Консультация</button>
+      </div>
+    </div>
+
+    <section class="main-header">
+      <h1 class="main-header-title fw-regular">
+        Насладись прогулкой в горах <br />
+        с командой единомышленников
+      </h1>
+      <div class="program-select-container">
+        <div class="select">
+          <select id="location" class="date-capture" [(ngModel)]="selectedLocation" name="location">
+            <option value="" disabled selected>Локация для тура</option>
+            <option>Гора Эльбрус</option>
+            <option>Алтайский маршрут</option>
+            <option>Кавказские горы</option>
+          </select>
+          <label>выберите из списка</label>
+        </div>
+
+        <div class="select">
+          <input
+            id="select-date"
+            type="date"
+            class="date-capture date-placeholder-text"
+            [(ngModel)]="selectedDate"
+            name="date"
+            required
+          />
+          <label>укажите дату</label>
+        </div>
+
+        <div class="select">
+          <select
+            id="participants"
+            class="date-capture"
+            [(ngModel)]="selectedParticipants"
+            name="participants"
+          >
+            <option value="" disabled selected>Участники</option>
+            <option>1 человек</option>
+            <option>2 человека</option>
+            <option>3-4 человека</option>
+            <option>более 4 человек</option>
+          </select>
+          <label>выберите из списка</label>
+        </div>
+
+        <button id="find-program" class="primary-btn" [disabled]="isSearchDisabled">
+          Найти программу
+        </button>
       </div>
 
-      <div class="select">
+      <div class="live-input-container">
         <input
-          id="select-date"
-          type="date"
-          date-placeholder="Дата похода"
-          class="date-capture date-placeholder-text"
-          required
+          id="live-input"
+          type="text"
+          [(ngModel)]="liveInputText"
+          name="liveInput"
+          placeholder="Живой инпут"
         />
-        <label for="">укажите дату</label>
+        <span class="live-output">{{ liveInputText }}</span>
+      </div>
+    </section>
+  </header>
+
+  <section class="explore-wrapper">
+    <div class="explore">
+      <div class="image-stack">
+        <img class="image-main" src="/images/explore-mountain.jpg" alt="Горы" />
+        <div class="image-overlay">
+          <img src="/images/explore-cabin.jpg" alt="Домик в горах" />
+          <button id="play-video-btn" class="play-btn" aria-label="Смотреть видео"></button>
+        </div>
       </div>
 
-      <div class="select">
-        <select id="participants" class="date-capture">
-          <option>Участники</option>
-        </select>
-        <label>выберите из списка</label>
+      <div class="text-content">
+        <span class="label">о нашем походе</span>
+        <h2 class="title">Исследуйте все горные массивы мира вместе с нами</h2>
+        <p class="description">
+          Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+          тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат
+          Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его
+          поисками в классической латинской литературе.
+        </p>
+        <button id="tour-program-btn" class="primary-btn">Программа тура</button>
       </div>
-      <button id="find-program" class="search-program-btn fs-16 bold">Найти программу</button>
     </div>
   </section>
-</header>
+
+  <section class="best-programs">
+    <div class="best-programs-content">
+      <div class="text-column">
+        <span class="label">наше предложение</span>
+        <h2 class="title">Лучшие программы для тебя</h2>
+        <p class="description">
+          Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+          тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.
+        </p>
+
+        <div class="benefits-list">
+          @for (item of tourAdvantages; track item.id) {
+            <div class="benefit-item">
+              <img [src]="'/images/' + item.icon" [alt]="item.title" class="benefit-icon" />
+              <div class="benefit-text">
+                <h3 class="benefit-title">{{ item.title }}</h3>
+                <p class="benefit-description">{{ item.description }}</p>
+              </div>
+            </div>
+          }
+        </div>
+
+        <button id="program-price-btn" class="primary-btn">Стоимость программ</button>
+      </div>
+
+      <div class="photo-grid">
+        <img src="/images/canyon-river-cup.jpg" alt="Каньон с рекой" />
+        <img src="/images/canyon-view-traveler.jpg" alt="Вид с обрыва" />
+        <img src="/images/snowmobile-mountain-winter.jpg" alt="Снегоход в горах" />
+        <img src="/images/mountain-valley-stream.jpg" alt="Горная долина" />
+      </div>
+    </div>
+  </section>
+}
