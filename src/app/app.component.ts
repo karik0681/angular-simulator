@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { Color } from '../enums/Color';
 import { Collection } from '../collection';
 import { IBenefit } from '../interfaces/benefit';
+import { IDirection } from '../interfaces/direction';
+import { IBlogPost } from '../interfaces/blog-post';
 
 interface IGuide {
   name: string;
@@ -39,6 +41,63 @@ export class AppComponent {
       title: 'Лояльные цены',
       description:
         'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
+    },
+  ];
+
+  directions: IDirection[] = [
+    {
+      id: 1,
+      title: 'Озеро возле гор',
+      subtitle: 'романтическое приключение',
+      price: 480,
+      image: 'lake-mountains.jpg',
+    },
+    {
+      id: 2,
+      title: 'Ночь в горах',
+      subtitle: 'романтическое приключение',
+      image: 'night-mountains-stars.jpg',
+      price: 500,
+    },
+    {
+      id: 3,
+      title: 'Рассвет в горах',
+      subtitle: 'романтическое приключение',
+      image: 'sunrise-rock.jpg',
+      price: 230,
+    },
+  ];
+
+  blogPosts: IBlogPost[] = [
+    {
+      id: 1,
+      title: 'Красивая Италия, какая она в реальности?',
+      image: 'italy-cinque-terre.jpg',
+      description:
+        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
+      date: '01/06/2023',
+    },
+    {
+      id: 2,
+      title: 'Долгой сомнения! Весь мир открыт для вас!',
+      image: 'ocean-sunset.jpg',
+      description:
+        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации ... независимые способы реализации соответствующих...',
+      date: '01/06/2023',
+    },
+    {
+      id: 3,
+      title: 'Как подготовиться к путешествию в одиночку?',
+      image: 'street-travel.jpg',
+      description: 'Для современного мира базовый вектор развития предполагает.',
+      date: '01/06/2023',
+    },
+    {
+      id: 4,
+      title: 'Индия... летит?',
+      image: 'taj-mahal.jpg',
+      description: 'Для современного мира базовый.',
+      date: '01/06/2023',
     },
   ];
 

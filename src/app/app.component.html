@@ -172,3 +172,50 @@
     </div>
   </section>
 }
+<section class="popular-directions">
+  <div class="section-header">
+    <span class="label">Популярные направления</span>
+    <h2 class="section-title">Лучшие направления для путешествий</h2>
+  </div>
+
+  <div class="directions-grid">
+    @for (direction of directions; track direction.id) {
+      <div class="direction-card">
+        <img [src]="'/images/' + direction.image" [alt]="direction.title" />
+        <div class="direction-info">
+          <div class="direction-text">
+            <h3 class="direction-title">{{ direction.title }}</h3>
+            <p class="direction-subtitle">{{ direction.subtitle }}</p>
+          </div>
+          <div class="direction-price-badge">${{ direction.price }}</div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <button id="directions-rating-btn" class="primary-btn">Рейтинг направлений</button>
+</section>
+
+<section class="blog">
+  <div class="section-header">
+    <span class="label">дополнительно</span>
+    <h2 class="section-title">Блог о путешествиях</h2>
+  </div>
+
+  <div class="blog-grid">
+    @for (post of blogPosts; track post.id) {
+      <article class="blog-post">
+        <img [src]="'/images/' + post.image" [alt]="post.title" />
+
+        <div class="post-content">
+          <h3 class="blog-title">{{ post.title }}</h3>
+          <p class="blog-description">{{ post.description }}</p>
+          <div class="post-footer">
+            <span class="post-date">{{ post.date }}</span>
+            <a [id]="'read-more-' + post.id" href="#" class="read-more">читать дальше</a>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>
